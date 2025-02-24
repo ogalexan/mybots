@@ -7,7 +7,7 @@ def Create_World():
     height = 1
     x = 0
     y = 0
-    z = 0
+    z = 1
 
     pyrosim.Send_Cube(name="Box", pos=[x,3,z], size=[length,width,height])      
     pyrosim.End()
