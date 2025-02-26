@@ -6,6 +6,7 @@ import pyrosim.pyrosim as pyrosim
 from world import WORLD
 from robot import ROBOT
 
+
 class SIMULATION:
     def __init__(self):
         
@@ -18,7 +19,7 @@ class SIMULATION:
 
         p.setGravity(0,0,-9.8)
 
-        pyrosim.Prepare_To_Simulate(self.robotId)
+        #pyrosim.Prepare_To_Simulate(self.robot.robotId)
 
 
     def Run(self):
@@ -27,7 +28,9 @@ class SIMULATION:
             print(i)
             
             p.stepSimulation()
-            robot.Sense()
+            self.robot.Sense(i)
+            self.robot.Act(i)
+
 
             '''
             backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
