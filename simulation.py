@@ -23,7 +23,7 @@ class SIMULATION:
 
 
     def Run(self):
-        iterations = 1000;
+        iterations = 10;
         for i in range(iterations):
             print(i)
             
@@ -34,6 +34,8 @@ class SIMULATION:
 
             time.sleep(1)
 
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
 
     def __del__(self):
         p.disconnect()
