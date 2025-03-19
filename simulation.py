@@ -7,10 +7,11 @@ import constants as c
 from world import WORLD
 from robot import ROBOT
 
-
 class SIMULATION:
     def __init__(self, directOrGUI):
         
+        self.directOrGUI = directOrGUI
+
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
 
@@ -26,7 +27,6 @@ class SIMULATION:
 
         #pyrosim.Prepare_To_Simulate(self.robot.robotId)
 
-
     def Run(self):
         iterations = c.iterations;
         for i in range(iterations):
@@ -37,14 +37,13 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
 
-            time.sleep(1)
+            if self.directOrGUI == "GUI":
+                time.sleep(1)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
 
     def __del__(self):
         p.disconnect()
-
-
 
 
