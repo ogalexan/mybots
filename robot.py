@@ -51,9 +51,9 @@ class ROBOT:
                         targetPosition = desiredAngle,
                         maxForce = c.maxForce)
                 
-                print("neuronName: " + neuronName)
-                print("jointName: " + jointName)
-                print("desiredAngle: " + str(desiredAngle))
+#                print("neuronName: " + neuronName)
+#                print("jointName: " + jointName)
+#                print("desiredAngle: " + str(desiredAngle))
 
         #for motor in self.motors.values():
         #    motor.Set_Value(self, i)

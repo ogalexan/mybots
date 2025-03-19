@@ -2,15 +2,20 @@ import pybullet as p
 import time
 import pybullet_data
 import pyrosim.pyrosim as pyrosim 
+import constants as c 
 
 from world import WORLD
 from robot import ROBOT
 
 
 class SIMULATION:
-    def __init__(self):
+    def __init__(self, directOrGUI):
         
-        self.physicsClient = p.connect(p.GUI)
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+
+        else:
+            self.physicsClient = p.connect(p.GUI)
         
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
@@ -23,9 +28,9 @@ class SIMULATION:
 
 
     def Run(self):
-        iterations = 10;
+        iterations = c.iterations;
         for i in range(iterations):
-            print(i)
+            #print(i)
             
             p.stepSimulation()
             self.robot.Sense(i)

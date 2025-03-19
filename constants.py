@@ -1,6 +1,6 @@
 import numpy
 
-iterations = 1000
+iterations = 20
 
 backLegSensorValues = numpy.zeros(iterations)
 frontLegSensorValues = numpy.zeros(iterations)
@@ -22,4 +22,4 @@ FrontLegMotorVectors = [FrontLegAmplitude * numpy.sin(FrontLegFrequency * k + Ba
 
 maxForce = 500 
 
-
+numberOfGenerations = 10
