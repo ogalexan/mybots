@@ -2,24 +2,50 @@ import os
 import numpy
 import pyrosim.pyrosim as pyrosim
 import random
+import time 
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, nextAvailableID):
         
         self.weights = numpy.random.rand(3,2)
         self.weights = self.weights * 2 - 1
-        
-    
+        self.myID = nextAvailableID
+    """
     def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
 
-        os.system('python3 simulate.py '+ str(directOrGUI))
-        fitnessFile = open("fitness.txt", "r")
+        os.system('python3 simulate.py '+ str(directOrGUI) + " " + str(self.myID) + " &") 
+        fitnessFileName = f"fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        
+        fitnessFile = open(f"fitness" + str(self.myID) + ".txt", "r")
         self.fitness = float(fitnessFile.read())
+        print(self.fitness)
         fitnessFile.close()
+    """
 
+    def Start_Simulation(self, directOrGUI):
+        self.Create_World()
+        self.Create_Body()
+        self.Create_Brain()
+
+        os.system('python3 simulate.py '+ str(directOrGUI) + " " + str(self.myID) + " &")
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = f"fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+
+        with open (fitnessFileName, "r") as f:
+            fitness_str = f.read().strip()
+
+        self.fitness = float(fitness_str)
+        print(self.fitness)
+        f.close()
+        os.system(f"rm fitness" + str(self.myID) + ".txt")
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
@@ -54,7 +80,7 @@ class SOLUTION:
 
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
 
         pyrosim.Send_Sensor_Neuron(name = 0, linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1, linkName = "BackLeg")
@@ -78,3 +104,16 @@ class SOLUTION:
         randomRow = random.randint(0,2)
         randomColumn = random.randint(0,1)
         self.weights[randomRow, randomColumn] = random.random()*2 - 1
+
+
+    def Set_ID(self):
+        self.myID += 1
+
+
+
+
+
+
+
+
+

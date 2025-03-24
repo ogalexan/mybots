@@ -18,8 +18,9 @@ class HILL_CLIMBER:
         self.Spawn()
         self.Mutate()
         self.child.Evaluate("DIRECT")
-        self.Print()
-        self.Select()
+        exit()
+        #self.Print()
+        #self.Select()
 
     
     def Spawn(self):
