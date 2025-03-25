@@ -19,7 +19,6 @@ class ROBOT:
         self.nn = NEURAL_NETWORK("brain" + self.solutionID + ".nndf")
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        #self.nn = NEURAL_NETWORK("brain" + self.solutionID + ".nndf")
         command = f"rm brain" + str(self.solutionID) + ".nndf"
         os.system(command)        
 
@@ -74,5 +73,4 @@ class ROBOT:
         f.write(str(xCoordinateOfLinkZero))
         os.system(f"mv tmp" + str(self.solutionID) + ".txt fitness" + str(self.solutionID) + ".txt")
         f.close()
-        #exit()
 

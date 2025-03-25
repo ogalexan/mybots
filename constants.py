@@ -22,7 +22,7 @@ FrontLegMotorVectors = [FrontLegAmplitude * numpy.sin(FrontLegFrequency * k + Ba
 
 maxForce = 500 
 numberOfGenerations = 10
-populationSize = 2
+populationSize = 4
 
 
 

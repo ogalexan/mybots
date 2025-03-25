@@ -32,18 +32,19 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
 
-        os.system('python3 simulate.py '+ str(directOrGUI) + " " + str(self.myID) + " &")
+        os.system('python3 simulate.py '+ str(directOrGUI) + " " + str(self.myID) + " 2&>1 &")
 
     def Wait_For_Simulation_To_End(self):
         fitnessFileName = f"fitness" + str(self.myID) + ".txt"
         while not os.path.exists(fitnessFileName):
-            time.sleep(0.01)
+            time.sleep(0.1)
+        
+        while os.stat(fitnessFileName).st_size == 0:
+            time.sleep(0.1)
 
         with open (fitnessFileName, "r") as f:
             fitness_str = f.read().strip()
-
-        self.fitness = float(fitness_str)
-        print(self.fitness)
+            self.fitness = float(fitness_str)
         f.close()
         os.system(f"rm fitness" + str(self.myID) + ".txt")
 
@@ -104,15 +105,6 @@ class SOLUTION:
         randomRow = random.randint(0,2)
         randomColumn = random.randint(0,1)
         self.weights[randomRow, randomColumn] = random.random()*2 - 1
-
-
-    def Set_ID(self):
-        self.myID += 1
-
-
-
-
-
 
 
 
