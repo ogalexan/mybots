@@ -21,10 +21,10 @@ FrontLegMotorVectors = [FrontLegAmplitude * numpy.sin(FrontLegFrequency * k + Ba
 
 
 maxForce = 500 
-numberOfGenerations = 10
-populationSize = 4
+numberOfGenerations = 20
+populationSize = 2
 
-
-
+numSensorNeurons = 9
+numMotorNeurons = 8
 
 
