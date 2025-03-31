@@ -15,6 +15,8 @@ class ROBOT:
         self.solutionID = solutionID
 
         self.robotId = p.loadURDF("body.urdf")
+        p.resetBasePositionAndOrientation(self.robotId, [0,0,2],[0,0,0,1])
+
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.nn = NEURAL_NETWORK("brain" + self.solutionID + ".nndf")
         self.Prepare_To_Sense()
