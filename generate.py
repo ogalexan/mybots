@@ -3,9 +3,9 @@ import random
 
 def Create_World():
     pyrosim.Start_SDF("world.sdf")
-    length = 1
-    width = 1
-    height = 1
+    length = 2
+    width = 5
+    height = 2
     x = 0
     y = 0
     z = 1

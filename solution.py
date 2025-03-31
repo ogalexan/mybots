@@ -52,14 +52,14 @@ class SOLUTION:
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
 
-        length = 1
-        width = 1
+        length = 10
+        width = 2
         height = 1
         x = 0
         y = 0
         z = 1
 
-        pyrosim.Send_Cube(name="Box", pos=[x,3,z], size=[length,width,height])
+        pyrosim.Send_Cube(name="Box", pos=[x,y,z], size=[length,width,height])
         pyrosim.End()
 
 
@@ -70,7 +70,7 @@ class SOLUTION:
         height = 1
         x = 0
         y = 0
-        z = 0
+        z = 1
 
         pyrosim.Send_Cube(name="Torso", pos=[0,0,1], size=[length,width,height])
         pyrosim.Send_Cube(name="BackLeg", pos=[0,-0.5,0], size=[0.2,1,0.2])
