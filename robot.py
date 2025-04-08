@@ -76,7 +76,8 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         basePosition = basePositionAndOrientation[0]
         xPosition = basePosition[0]
-        
+        zPosition = basePosition[2]
+
         f = open(f"tmp" + str(self.solutionID)+".txt", "w")
         f.write(str(xPosition))
         os.system(f"mv tmp" + str(self.solutionID) + ".txt fitness" + str(self.solutionID) + ".txt")
